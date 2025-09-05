@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contatti Protetti</title>
+    <style>
+        #sezione-contatti {
+            display: none; /* Nascondi la sezione contatti inizialmente */
+            text-align: left;
+            color: #ffffff;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 0; /* Rimuove il margine predefinito del body */
+        }
+
+        .container-blu {
+            background-color: lightblue; /* Il colore blu chiaro desiderato */
+            padding: 20px; /* Aggiunge spazio interno al container blu */
+            text-align: center; /* Opzionale: centra il testo all'interno del container blu */
+            border-radius: 20px;
+        }
+        .container {
+            background-color: rgb(61, 91, 105); /* Il colore blu scuro desiderato */
+            padding: 20px; /* Aggiunge spazio interno al container blu */
+            text-align: center; /* Opzionale: centra il testo all'interno del container blu */
+            border-radius: 20px;
+            display: none; /* Nascondi anche il container all'inizio */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-blu">
+        <h1>Pagina con Contenuto Protetto</h1>
+        <button onclick="verificaPassword()">Mostra Contatti</button>
+    </div>
+
+    <div class="container">
+        <div id="sezione-contatti">
+            <h2>Contattami</h2>
+            <p>Qui puoi trovare le mie informazioni di contatto:</p>
+            <ul>
+                <li>Email: nicolobossio@gmail.com</li>
+                <li>Telefono: +39 380 214 1801</li>
+                <li>Indirizzo: Via 4 Novembre, 68/B, Merano (BZ)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function verificaPassword() {
+            var passwordCorretta = "12345"; // **Ricorda: insicuro per dati sensibili!**
+            var passwordInserita;
+
+            do {
+                passwordInserita = prompt("Inserisci la password per visualizzare i contatti:");
+                if (passwordInserita === null) {
+                    alert("Operazione annullata.");
+                    return; // Esce dalla funzione se l'utente annulla
+                } else if (passwordInserita !== passwordCorretta) {
+                    alert("Password errata. Riprova.");
+                }
+            } while (passwordInserita !== passwordCorretta);
+
+            // Se il ciclo while termina, significa che la password è corretta
+            document.getElementById("sezione-contatti").style.display = "block";
+            document.querySelector(".container").style.display = "block"; // Mostra anche il container
+        }
+    </script>
+
+</body>
+</html>

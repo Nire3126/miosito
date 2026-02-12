@@ -1,69 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contatti Bossio</title>
-    <style>
-        #sezione-contatti {
-            display: none; /* Nascondi la sezione contatti inizialmente */
-            text-align: left;
-            color: #ffffff;
-        }
-        body {
-            font-family: sans-serif;
-            margin: 0; /* Rimuove il margine predefinito del body */
-        }
-
-        .container-blu {
-            background-color: lightblue; /* Il colore blu chiaro desiderato */
-            padding: 20px; /* Aggiunge spazio interno al container blu */
-            text-align: center; /* Opzionale: centra il testo all'interno del container blu */
-            border-radius: 20px;
-        }
-        .container {
-            background-color: rgb(61, 91, 105); /* Il colore blu scuro desiderato */
-            padding: 20px; /* Aggiunge spazio interno al container blu */
-            text-align: center; /* Opzionale: centra il testo all'interno del container blu */
-            border-radius: 20px;
-            display: none; /* Nascondi anche il container all'inizio */
-        }
-    </style>
-</head>
-<body>
-    <div class="container-blu">
-        <h1>Pagina con Contenuto Protetto</h1>
-        <button onclick="verificaPassword()">Mostra Contatti</button>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ThermoKit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">ThermoKit</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        <a class="nav-link" href="chi_siamo.html">Chi siamo</a>
+        <a class="nav-link" href="shop.html">Aquista</a>
+      </div>
     </div>
-
-    <div class="container">
-        <div id="sezione-contatti">
-            <h2>Contattami</h2>
-            <p>Qui puoi trovare le mie informazioni di contatto:</p>
-           
-        </div>
-    </div>
-
-    <script>
-        function verificaPassword() {
-            var passwordCorretta = "12345"; // **Ricorda: insicuro per dati sensibili!**
-            var passwordInserita;
-
-            do {
-                passwordInserita = prompt("Inserisci la password per visualizzare i contatti:");
-                if (passwordInserita === null) {
-                    alert("Operazione annullata.");
-                    return; // Esce dalla funzione se l'utente annulla
-                } else if (passwordInserita !== passwordCorretta) {
-                    alert("Password errata. Riprova.");
-                }
-            } while (passwordInserita !== passwordCorretta);
-
-            // Se il ciclo while termina, significa che la password è corretta
-            document.getElementById("sezione-contatti").style.display = "block";
-            document.querySelector(".container").style.display = "block"; // Mostra anche il container
-        }
-    </script>
-
-</body>
-
+  </div>
+</nav>
+<h1>Index</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
 </html>
-

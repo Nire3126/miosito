@@ -1,145 +1,367 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="it">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi siamo - ThermoKit</title>
 
-  <title>ThermoKit - Kit smart per monitorare la temperatura</title>
-
-  <meta name="description" content="ThermoKit è il kit smart per monitorare la temperatura in modo semplice con Arduino ed ESP32.">
+  <meta name="description" content="Scopri la storia di ThermoKit, il progetto creato da Nicolò Bossio per monitorare temperatura e umidità in modo smart.">
   <meta name="author" content="Nicolò Bossio">
+  <meta property="og:title" content="Chi siamo - ThermoKit">
+  <meta property="og:description" content="La storia, l’idea e il fondatore di ThermoKit.">
   <meta property="og:image" content="https://www.thermokit.it/Logo_Def.png">
+  <meta name="theme-color" content="#0f172a">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    :root {
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --border: rgba(15, 23, 42, 0.08);
+      --nav: rgba(255,255,255,0.9);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #cbd5e1 0%, #dbe4ee 100%);
+    }
+
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: var(--nav) !important;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .nav-link {
+      color: var(--text) !important;
+    }
+
+    .nav-link:hover {
+      opacity: 0.75;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.16), transparent 28%),
+        linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e293b 100%);
+      color: white;
+      border-radius: 0 0 32px 32px;
+    }
+
+    .hero .container {
+      min-height: 48vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.15rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      padding: 72px 0;
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 32px;
+      height: 100%;
+    }
+
+    .section-card h2,
+    .section-card h3 {
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      margin-bottom: 14px;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .logo-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 28px;
+      text-align: center;
+      height: 100%;
+    }
+
+    .logo-card img {
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .logo-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .founder-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 99, 235, 0.10);
+      color: var(--primary);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      padding: 40px 28px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 760px;
+      margin: 0 auto 24px auto;
+    }
+
+    footer {
+      background: rgba(255,255,255,0.72);
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-title {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+  </style>
 </head>
 
-  <body style="background-color: lightslategray;">
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="home">ThermoKit</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<body>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav me-auto">
-        <a class="nav-link active" aria-current="page" href="home">Home</a>
-        <a class="nav-link" href="chi_siamo">Chi siamo</a>
-        <a class="nav-link" href="prodotti">Prodotti</a>
-        <a class="nav-link" href="shop">Acquista</a>
-      </div>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">ThermoKit</a>
 
-      <!-- Icona Condividi a destra -->
-      <div class="d-flex">
-        <a href="https://www.thermokit.it" 
-   target="_blank" 
-   class="nav-link text-dark"
-   onclick="if(navigator.share){
-              navigator.share({
-                  title:'ThermoKit',
-                  text:'Dai un’occhiata a ThermoKit!',
-                  url:'https://www.thermokit.it'
-              }); 
-              return false;
-           }">
-  <i class="bi bi-share-fill" style="font-size: 1.3rem;"></i>
-</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Apri menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      </div>
-    </div>
-  </div>
-</nav>
-<div class="text-center" style="color: white; margin: 20px;">
-  <hr>
-  <div class="card mx-auto my-5" style="width: 18rem;">
-    <img src="Logo_Def.png" class="card-img-top">
-    <div class="card-body">
-      <p class="card-text">
-        Questo è il <b>logo</b>
-      </p>
-    </div>
-  </div>
-  <hr>
-  <h1>Da dove viene l'idea?</h1>
-  <p>
-    <b>ThermoKit</b> nasce dal fatto che non mi veniva in mente un progetto da fare, <br>
-    allora una notte mi sono messo a pensare come faccio di solito e da quella notte è nato <b>ThermoKit</b>. 
-  </p>
-  <hr>
-  <h1>Chi è il fondatore?</h1>
-  <p>
-    Ciao maker! <br>
-    Io sono <b>Nicolò Bossio</b>, un ragazzo di Merano in provincia di Bolzano. <br>
-    Sono il fondatore di ThermoKit. <br>
-  </p>
-  <h4>Perché ho creato ThermoKit?</h4>
-  <p>
-    L’ho creato perché mi piace mettermi in gioco e sono appassionato di domotica.
-  </p>
-  <hr>
-</div>
-    <footer class="bg-light text-dark pt-4 pb-3 mt-5 border-top">
-  <div class="container">
-    
-    <div class="row gy-3">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link" href="home.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="chi_siamo.html">Chi siamo</a>
+          <a class="nav-link" href="prodotti.html">Prodotti</a>
+          <a class="nav-link" href="home.html#beta">Beta</a>
+        </div>
 
-      <!-- Colonna Brand -->
-      <div class="col-md-4">
-        <h6 class="fw-bold mb-2">ThermoKit</h6>
-        <p class="small mb-0">
-          Sistema smart per il monitoraggio di temperatura e umidità.
-        </p>
-      </div>
-
-      <!-- Colonna Supporto -->
-      <div class="col-md-4">
-        <h6 class="fw-bold mb-2">Supporto</h6>
-        <p class="small mb-1">
-          Email: 
-          <a href="mailto:support@thermokit.it" class="text-decoration-none text-dark">
-            support@thermokit.it
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="https://forms.gle/B3qAZZEjG5rhsqJK8" target="_blank" class="btn btn-primary rounded-4 px-3">
+            Partecipa
           </a>
-        </p>
-        <p class="small mb-0">
-          Lun–Ven 9:00–18:00
+
+          <a href="https://www.thermokit.it"
+             target="_blank"
+             class="nav-link text-dark px-2"
+             aria-label="Condividi ThermoKit"
+             onclick="if(navigator.share){navigator.share({title:'ThermoKit',text:'Dai un’occhiata a ThermoKit!',url:'https://www.thermokit.it'});return false;}">
+            <i class="bi bi-share-fill fs-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="w-100">
+        <div class="hero-badge">
+          <i class="bi bi-stars"></i>
+          La storia dietro ThermoKit
+        </div>
+        <h1>Un’idea nata di notte,<br>diventata un progetto vero</h1>
+        <p>
+          ThermoKit nasce dalla voglia di creare qualcosa di utile, smart e concreto:
+          un sistema semplice per monitorare temperatura e umidità con una visione da vero maker.
         </p>
       </div>
+    </div>
+  </header>
 
-      <!-- Colonna Legale -->
-      <div class="col-md-4">
-        <h6 class="fw-bold mb-2">Info</h6>
-        <p class="small mb-1">
-          <a href="privacy_policy" class="text-decoration-none text-dark">Privacy Policy</a>
-        </p>
-        <p class="small mb-0">
-          <a href="termini_e_condizioni" class="text-decoration-none text-dark">Termini e Condizioni</a>
-        </p>
+  <main class="content-section">
+    <div class="container">
+      <div class="row g-4 align-items-stretch mb-4">
+        <div class="col-lg-4">
+          <div class="logo-card">
+            <img src="https://www.thermokit.it/Logo_Def.png" alt="Logo ThermoKit">
+            <p><strong>ThermoKit</strong> è un progetto che unisce tecnologia, creatività e passione per l’innovazione.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="section-card h-100">
+            <h2>Da dove nasce l’idea?</h2>
+            <p>
+              ThermoKit è nato in un momento molto semplice ma super reale:
+              una sera in cui cercavo un’idea nuova da sviluppare. Pensando, progettando e immaginando qualcosa di utile,
+              è venuta fuori l’idea di creare un kit smart dedicato al monitoraggio della temperatura e dell’umidità.
+              Da quella notte, l’idea ha iniziato a trasformarsi in qualcosa di concreto.
+            </p>
+          </div>
+        </div>
       </div>
 
+      <div class="row g-4 mb-5">
+        <div class="col-lg-6">
+          <div class="section-card h-100">
+            <div class="founder-highlight">
+              <i class="bi bi-person-badge"></i>
+              Fondatore
+            </div>
+            <h3>Chi ha creato ThermoKit?</h3>
+            <p>
+              Ciao maker, io sono <strong>Nicolò Bossio</strong>, un ragazzo di Merano, in provincia di Bolzano,
+              appassionato di tecnologia, Arduino, domotica e progetti creativi.
+              ThermoKit rappresenta il mio modo di trasformare un’idea in qualcosa di reale, utile e in continua evoluzione.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="section-card h-100">
+            <div class="founder-highlight">
+              <i class="bi bi-lightbulb"></i>
+              Visione
+            </div>
+            <h3>Perché è stato creato?</h3>
+            <p>
+              Ho creato ThermoKit perché mi piace mettermi in gioco e costruire progetti che uniscano elettronica e utilità pratica.
+              L’obiettivo è rendere il monitoraggio ambientale più accessibile, più intuitivo e più interessante anche per chi vuole imparare.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h2>Vuoi seguire la crescita di ThermoKit?</h2>
+        <p>
+          Il progetto è in evoluzione e la beta è il modo migliore per entrare in anticipo,
+          provare l’idea e contribuire a migliorarla con feedback reali.
+        </p>
+        <a href="https://forms.gle/B3qAZZEjG5rhsqJK8" target="_blank" class="btn btn-dark btn-lg rounded-4 px-4">
+          Candidati alla beta
+        </a>
+      </div>
     </div>
+  </main>
 
-    <hr class="my-3">
+  <footer class="pt-5 pb-3 mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <div class="footer-title">ThermoKit</div>
+          <p class="muted mb-0">
+            Sistema smart per il monitoraggio di temperatura e umidità.
+          </p>
+        </div>
 
-    <div class="text-center small">
-      © 2026 ThermoKit - Tutti i diritti riservati
+        <div class="col-md-4">
+          <div class="footer-title">Supporto</div>
+          <p class="mb-1">
+            Email:
+            <a href="mailto:support@thermokit.it">support@thermokit.it</a>
+          </p>
+          <p class="muted mb-0">Lun–Ven 9:00–18:00</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="footer-title">Info</div>
+          <p class="mb-1">
+            <a href="privacy_policy.html">Privacy Policy</a>
+          </p>
+          <p class="mb-0">
+            <a href="termini_e_condizioni.html">Termini e Condizioni</a>
+          </p>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="text-center small muted">
+        © 2026 ThermoKit - Tutti i diritti riservati
+      </div>
     </div>
+  </footer>
 
-  </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

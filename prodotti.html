@@ -1,166 +1,404 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="it">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prodotti - ThermoKit</title>
 
-  <title>ThermoKit - Kit smart per monitorare la temperatura</title>
-
-  <meta name="description" content="ThermoKit è il kit smart per monitorare la temperatura in modo semplice con Arduino ed ESP32.">
+  <meta name="description" content="Scopri le versioni di ThermoKit: Base, Pro e School Edition. Un sistema smart per monitorare temperatura e umidità.">
   <meta name="author" content="Nicolò Bossio">
+  <meta property="og:title" content="Prodotti - ThermoKit">
+  <meta property="og:description" content="Confronta le versioni Base, Pro e School Edition di ThermoKit.">
   <meta property="og:image" content="https://www.thermokit.it/Logo_Def.png">
+  <meta name="theme-color" content="#0f172a">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    :root {
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --border: rgba(15, 23, 42, 0.08);
+      --nav: rgba(255,255,255,0.9);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #cbd5e1 0%, #dbe4ee 100%);
+    }
+
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: var(--nav) !important;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .nav-link {
+      color: var(--text) !important;
+    }
+
+    .nav-link:hover {
+      opacity: 0.75;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.16), transparent 28%),
+        linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e293b 100%);
+      color: white;
+      border-radius: 0 0 32px 32px;
+    }
+
+    .hero .container {
+      min-height: 48vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.15rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      padding: 72px 0;
+    }
+
+    .intro-box,
+    .edition-card,
+    .compare-box,
+    .cta-box {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .intro-box,
+    .compare-box,
+    .cta-box {
+      padding: 32px;
+    }
+
+    .edition-card {
+      height: 100%;
+      padding: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .edition-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.10);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .edition-card h3 {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .edition-card ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    .edition-card li {
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cta-box {
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 760px;
+      margin: 0 auto 24px auto;
+    }
+
+    footer {
+      background: rgba(255,255,255,0.72);
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-title {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 
-  <body style="background-color: lightslategray;">
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="home">ThermoKit</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<body>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav me-auto">
-        <a class="nav-link active" aria-current="page" href="home">Home</a>
-        <a class="nav-link" href="chi_siamo">Chi siamo</a>
-        <a class="nav-link" href="prodotti">Prodotti</a>
-        <a class="nav-link" href="shop">Acquista</a>
-      </div>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">ThermoKit</a>
 
-      <!-- Icona Condividi a destra -->
-      <div class="d-flex">
-        <a href="https://www.thermokit.it" 
-   target="_blank" 
-   class="nav-link text-dark"
-   onclick="if(navigator.share){
-              navigator.share({
-                  title:'ThermoKit',
-                  text:'Dai un’occhiata a ThermoKit!',
-                  url:'https://www.thermokit.it'
-              }); 
-              return false;
-           }">
-  <i class="bi bi-share-fill" style="font-size: 1.3rem;"></i>
-</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Apri menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      </div>
-    </div>
-  </div>
-</nav>
-<div style="color: white; margin: 20px;">
-<hr>
-  <h1>Cos'è ThermoKit?</h1>
-  <p>
-    <b>ThermoKit</b> è un kit smart di un termometro, che utilizza un microcontrollore <br>
-    chiamato <b>ESP32</b> nella versione <b>BASE</b>. <br>
-    Mentre nella versione <b>PRO</b>, utilizza sempre un <b>ESP32</b> ma insieme ad un <b>Arduino Nano</b>.
-  </p>
-  <hr>
-  <h1>Kit BASE vs Kit PRO</h1>
-  <p>
-    Nel <b>Kit BASE</b>, viene fornito: <br>
-    <ul>
-      <li>ESP32 (Microcontrollore con WiFi e Bluetooth)</li>
-      <li>DHT11 (Sensore di umidità e temperatura)</li>
-      <li>Display LCD (Visualizza la temperatura e l'umidità)</li>
-      <li>Cavi e resistenze</li>
-      <li>Pezzi stampati in 3D (In questo kit i pezzi sono a forma di termometro tradizionale a mercurio)</li> 
-    </ul>
-    Invece nel <b>Kit PRO</b>, viene fornito:
-    <ul>
-      <li>ESP32 (Come nel Kit Base)</li>
-      <li>Arduino Nano (Si comporta come l'ESP32 ma non ha il WiFi e Bluetooth)</li>
-      <li>DHT22 (Sensore di temperatura e umidità più preciso rispetto al DHT11)</li>
-      <li>Display LCD (Come nel Kit Base)</li>
-      <li>Cavi e resistenze</li>
-      <li>Pezzi stampati in 3D (In questo Kit i pezzi sono a forma di casa)</li> 
-    </ul>
-   In entrambi i kit ci sarà un'App dedicata per vedere i valori da ovunque ti trovi. <br>
-    Nella versione <b>PRO</b> c'è anche un'integrazione con <b>Alexa</b> e <b>Google Home</b>. <br>
-    In questi due casi, <b>ESP32</b> e <b>Arduino Nano</b> <br>
-    vengono forniti con il codice già <b>inserito</b> nel <b>microcontrollore</b>.
-</p>
-<hr>
-<h1>Cos'è la School Edition?</h1>
-<p>
-    La <b>School Edition</b> è uguale al <b>Kit PRO</b>, <br>
-    solo che al suo interno vengono inseriti <b>altri componenti</b> in più e i <b>microcontrollori</b> <br>
-    vengono forniti senza <b>codice</b>. Inoltre, nella <b>App</b> viene attivata la funzionalità <br>
-    <b>E-learning</b>, dove ci sono dei video illustrativi per creare altri progetti, oltre al classico <b>termometro</b>. <br>
-    Componenti in più:
-    <ul>
-      <li>HC-SR04P (Sensore a ultrasuoni)</li>
-      <li>Breadboard (Base per progetti)</li>
-      <li>SG90 (Servo motore)</li>
-      <li>Pulsanti</li>
-      <li>LED</li>
-      <li>Arduino UNO (Microcontrollore simile ad Arduino Nano)</li>
-      <li>DHT11 (Sensore di umidità e temperatura)</li>
-    </ul>
-</p>
-  <hr>
-</div>
-    <footer class="bg-light text-dark pt-4 pb-3 mt-5 border-top">
-  <div class="container">
-    
-    <div class="row gy-3">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link" href="home.html">Home</a>
+          <a class="nav-link" href="chi_siamo.html">Chi siamo</a>
+          <a class="nav-link active" aria-current="page" href="prodotti.html">Prodotti</a>
+          <a class="nav-link" href="home.html#beta">Beta</a>
+        </div>
 
-      <!-- Colonna Brand -->
-      <div class="col-md-4">
-        <h6 class="fw-bold mb-2">ThermoKit</h6>
-        <p class="small mb-0">
-          Sistema smart per il monitoraggio di temperatura e umidità.
-        </p>
-      </div>
-
-      <!-- Colonna Supporto -->
-      <div class="col-md-4">
-        <h6 class="fw-bold mb-2">Supporto</h6>
-        <p class="small mb-1">
-          Email: 
-          <a href="mailto:support@thermokit.it" class="text-decoration-none text-dark">
-            support@thermokit.it
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="https://forms.gle/B3qAZZEjG5rhsqJK8" target="_blank" class="btn btn-primary rounded-4 px-3">
+            Partecipa
           </a>
+
+          <a href="https://www.thermokit.it"
+             target="_blank"
+             class="nav-link text-dark px-2"
+             aria-label="Condividi ThermoKit"
+             onclick="if(navigator.share){navigator.share({title:'ThermoKit',text:'Dai un’occhiata a ThermoKit!',url:'https://www.thermokit.it'});return false;}">
+            <i class="bi bi-share-fill fs-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="w-100">
+        <div class="hero-badge">
+          <i class="bi bi-box-seam"></i>
+          Le versioni di ThermoKit
+        </div>
+        <h1>Scegli il kit più adatto<br>al tuo progetto</h1>
+        <p>
+          ThermoKit è disponibile in più versioni per adattarsi a esigenze diverse:
+          da chi vuole iniziare in modo semplice fino a chi cerca più funzioni e più possibilità di apprendimento.
         </p>
-        <p class="small mb-0">
-          Lun–Ven 9:00–18:00
+      </div>
+    </div>
+  </header>
+
+  <main class="content-section">
+    <div class="container">
+      <div class="intro-box mb-4">
+        <h2 class="section-title">Cos’è ThermoKit?</h2>
+        <p class="muted mb-0">
+          ThermoKit è un sistema smart per monitorare temperatura e umidità.
+          Nella versione <span class="highlight">Base</span> utilizza un <span class="highlight">ESP32</span>,
+          mentre nella versione <span class="highlight">Pro</span> combina <span class="highlight">ESP32</span> e
+          <span class="highlight">Arduino Nano</span> per offrire più funzionalità e più possibilità di espansione.
         </p>
       </div>
 
-      <!-- Colonna Legale -->
-       <div class="col-md-4">
-        <h6 class="fw-bold mb-2">Info</h6>
-        <p class="small mb-1">
-          <a href="privacy_policy" class="text-decoration-none text-dark">Privacy Policy</a>
-        </p>
-        <p class="small mb-0">
-          <a href="termini_e_condizioni" class="text-decoration-none text-dark">Termini e Condizioni</a>
-        </p>
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="edition-card">
+            <div class="edition-badge">Versione Base</div>
+            <h3>ThermoKit Base</h3>
+            <p class="muted">
+              La soluzione più semplice per iniziare con il monitoraggio ambientale.
+            </p>
+            <ul>
+              <li>ESP32 con Wi-Fi e Bluetooth</li>
+              <li>DHT11 per temperatura e umidità</li>
+              <li>Display LCD</li>
+              <li>Cavi e resistenze</li>
+              <li>Componenti stampati in 3D a forma di termometro</li>
+              <li>Codice già caricato nel microcontrollore</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="edition-card">
+            <div class="edition-badge">Versione Pro</div>
+            <h3>ThermoKit Pro</h3>
+            <p class="muted">
+              Più preciso, più completo e con integrazioni smart avanzate.
+            </p>
+            <ul>
+              <li>ESP32 + Arduino Nano</li>
+              <li>DHT22 più preciso del DHT11</li>
+              <li>Display LCD</li>
+              <li>Cavi e resistenze</li>
+              <li>Componenti stampati in 3D a forma di casa</li>
+              <li>App dedicata per monitoraggio remoto</li>
+              <li>Integrazione con Alexa e Google Home</li>
+              <li>Codice già inserito nei microcontrollori</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="edition-card">
+            <div class="edition-badge">School Edition</div>
+            <h3>ThermoKit School Edition</h3>
+            <p class="muted">
+              Pensata per imparare, sperimentare e realizzare più progetti.
+            </p>
+            <ul>
+              <li>Basata sulla versione Pro</li>
+              <li>Microcontrollori forniti senza codice</li>
+              <li>Funzione e-learning nell’app</li>
+              <li>Contenuti didattici e video illustrativi</li>
+              <li>Componenti extra per altri progetti</li>
+              <li>Ideale per scuole, studenti e makers</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
+      <div class="compare-box mb-5">
+        <h2 class="section-title">Componenti extra della School Edition</h2>
+        <p class="muted mb-3">
+          Oltre a quanto incluso nella versione Pro, la School Edition aggiunge altri componenti per ampliare l’esperienza pratica.
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>HC-SR04P</li>
+              <li>Breadboard</li>
+              <li>SG90 servo motore</li>
+              <li>Pulsanti</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li>LED</li>
+              <li>Arduino UNO</li>
+              <li>DHT11 aggiuntivo</li>
+              <li>Materiale pensato per esercitazioni e progetti</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
+      <div class="cta-box">
+        <h2>Vuoi provare ThermoKit in anteprima?</h2>
+        <p>
+          Stiamo selezionando tester per migliorare il progetto.
+          Se vuoi seguire l’evoluzione di ThermoKit e contribuire con feedback reali, entra nella beta.
+        </p>
+        <a href="https://forms.gle/B3qAZZEjG5rhsqJK8" target="_blank" class="btn btn-dark btn-lg rounded-4 px-4">
+          Candidati alla beta
+        </a>
+      </div>
     </div>
+  </main>
 
-    <hr class="my-3">
+  <footer class="pt-5 pb-3 mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <div class="footer-title">ThermoKit</div>
+          <p class="muted mb-0">
+            Sistema smart per il monitoraggio di temperatura e umidità.
+          </p>
+        </div>
 
-    <div class="text-center small">
-      © 2026 ThermoKit - Tutti i diritti riservati
+        <div class="col-md-4">
+          <div class="footer-title">Supporto</div>
+          <p class="mb-1">
+            Email:
+            <a href="mailto:support@thermokit.it">support@thermokit.it</a>
+          </p>
+          <p class="muted mb-0">Lun–Ven 9:00–18:00</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="footer-title">Info</div>
+          <p class="mb-1">
+            <a href="privacy_policy.html">Privacy Policy</a>
+          </p>
+          <p class="mb-0">
+            <a href="termini_e_condizioni.html">Termini e Condizioni</a>
+          </p>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="text-center small muted">
+        © 2026 ThermoKit - Tutti i diritti riservati
+      </div>
     </div>
+  </footer>
 
-  </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
 </html>
-
-
-
-
-
-
-
-

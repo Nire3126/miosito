@@ -361,47 +361,124 @@
       </div>
     </div>
   </footer>
-  <!-- COOKIE BANNER -->
-<div id="cookie-banner" style="
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  max-width: 500px;
-  width: 90%;
-  z-index: 9999;
-  display: none;
-">
+  <!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <strong>Cookie</strong>
+      <p>
+        Questo sito utilizza cookie tecnici essenziali per garantire il corretto funzionamento della piattaforma.
+        Continuando la navigazione, accetti la nostra
+        <a href="privacy_policy.html">Privacy Policy</a>.
+      </p>
+    </div>
 
-  <p style="margin-bottom: 15px; font-size: 14px;">
-    Utilizziamo cookie tecnici per migliorare l’esperienza sul sito.
-    Continuando a navigare accetti la nostra
-    <a href="privacy_policy.html">Privacy Policy</a>.
-  </p>
-
-  <div style="display: flex; gap: 10px; justify-content: flex-end;">
-    <button onclick="acceptCookies()" class="btn btn-dark btn-sm">
-      Accetta
-    </button>
+    <div class="cookie-actions">
+      <button class="btn btn-outline-secondary rounded-4 px-3" onclick="hideCookieBanner()">
+        Chiudi
+      </button>
+      <button class="btn btn-dark rounded-4 px-3" onclick="acceptCookies()">
+        Accetta
+      </button>
+    </div>
   </div>
-
 </div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 860px);
+    z-index: 9999;
+    display: none;
+    animation: cookieFadeUp 0.35s ease;
+  }
+
+  .cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
+  }
+
+  .cookie-text strong {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    color: #0f172a;
+  }
+
+  .cookie-text p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: #475569;
+  }
+
+  .cookie-text a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .cookie-text a:hover {
+    text-decoration: underline;
+  }
+
+  .cookie-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  @keyframes cookieFadeUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 14px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cookie-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cookie-actions {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+</style>
 
 <script>
   function acceptCookies() {
-    localStorage.setItem("cookiesAccepted", "true");
+    localStorage.setItem("thermokitCookiesAccepted", "true");
     document.getElementById("cookie-banner").style.display = "none";
   }
 
-  window.onload = function () {
-    if (!localStorage.getItem("cookiesAccepted")) {
+  function hideCookieBanner() {
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+
+  window.addEventListener("load", function () {
+    if (!localStorage.getItem("thermokitCookiesAccepted")) {
       document.getElementById("cookie-banner").style.display = "block";
     }
-  };
+  });
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

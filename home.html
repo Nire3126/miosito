@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ThermoKit - Kit smart per monitorare la temperatura</title>
   <link rel="icon" href="favicon.png" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <meta name="description" content="ThermoKit è il kit smart per monitorare temperatura e umidità in modo semplice.">
   <meta name="author" content="Nicolò Bossio">
@@ -236,6 +237,22 @@
         min-height: 64vh;
       }
     }
+.hero-image {
+  max-width: 85%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.03);
+}
+
+.small-kit {
+  max-width: 60%;
+  opacity: 0.9;
+}
+    
   </style>
 </head>
 
@@ -307,6 +324,24 @@
           </div>
         </div>
       </div>
+      
+<div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+  <div class="mb-4">
+    <img src="thermokit_pro.png" 
+         alt="ThermoKit Pro" 
+         class="img-fluid hero-image">
+    <p class="mt-2 fw-semibold text-light">ThermoKit Pro</p>
+  </div>
+
+  <div>
+    <img src="thermokit_base.png" 
+         alt="ThermoKit Base" 
+         class="img-fluid hero-image small-kit">
+    <p class="mt-2 text-light opacity-75">ThermoKit Base</p>
+  </div>
+
+</div>
     </div>
   </header>
 
@@ -363,7 +398,7 @@
     <section id="beta" class="pb-5">
       <div class="container">
         <div class="beta-box p-4 p-md-5 text-center">
-          <span class="beta-pill">Posti limitati <br> 10 posti rimaneti</span>
+          <span class="beta-pill">Posti limitati</span>
           <h2 class="fw-bold mb-3">Partecipa alla beta di ThermoKit</h2>
           <p class="muted fs-5 mb-4">
             Stiamo selezionando un numero limitato di tester per migliorare il prodotto.

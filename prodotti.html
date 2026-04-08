@@ -402,9 +402,11 @@
       </div>
     </div>
   </footer>
-  <!-- Cookie Banner -->
 <div id="cookie-banner" class="cookie-banner">
   <div class="cookie-content">
+    <div class="cookie-image">
+      <img src="cookie.png" alt="Cookie">
+    </div>
     <div class="cookie-text">
       <strong>Cookie</strong>
       <p>
@@ -449,6 +451,16 @@
     border: 1px solid rgba(15, 23, 42, 0.08);
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
   }
+  .cookie-image {
+  display: flex;
+  align-items: center;
+}
+
+.cookie-image img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
 
   .cookie-text strong {
     display: inline-block;

@@ -365,9 +365,11 @@
       </div>
     </div>
   </footer>
-  <!-- Cookie Banner -->
 <div id="cookie-banner" class="cookie-banner">
   <div class="cookie-content">
+    <div class="cookie-image">
+      <img src="cookie.png" alt="Cookie">
+    </div>
     <div class="cookie-text">
       <strong>Cookie</strong>
       <p>
@@ -399,6 +401,16 @@
     display: none;
     animation: cookieFadeUp 0.35s ease;
   }
+  .cookie-image {
+  display: flex;
+  align-items: center;
+}
+
+.cookie-image img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
 
   .cookie-content {
     display: flex;

@@ -20,240 +20,310 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <style>
-    :root {
-      --bg: #e2e8f0;
-      --nav: rgba(255,255,255,0.9);
-      --text: #0f172a;
-      --muted: #475569;
-      --primary: #2563eb;
-      --dark: #0f172a;
-      --card: #ffffff;
-      --border: rgba(15, 23, 42, 0.08);
-    }
+<style>
+  :root {
+    --bg: #e2e8f0;
+    --nav: rgba(255,255,255,0.9);
+    --text: #0f172a;
+    --muted: #475569;
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --card: #ffffff;
+    --border: rgba(15, 23, 42, 0.08);
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-      background: linear-gradient(180deg, #cbd5e1 0%, #dbe4ee 100%);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-    }
+  body {
+    background: linear-gradient(180deg, #cbd5e1 0%, #dbe4ee 100%);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+  }
 
-    .navbar {
-      backdrop-filter: blur(10px);
-      background: var(--nav) !important;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
+  .navbar {
+    backdrop-filter: blur(10px);
+    background: var(--nav) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  }
 
-    .navbar-brand {
-      font-weight: 700;
-      letter-spacing: -0.4px;
-    }
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
 
-    .nav-link {
-      color: var(--text) !important;
-    }
+  .nav-link {
+    color: var(--text) !important;
+  }
 
-    .nav-link:hover {
-      opacity: 0.75;
-    }
+  .nav-link:hover {
+    opacity: 0.75;
+  }
 
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top right, rgba(37, 99, 235, 0.22), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.16), transparent 28%),
+      linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e293b 100%);
+    color: white;
+    border-radius: 0 0 32px 32px;
+  }
+
+  .hero .container {
+    min-height: 72vh;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.92);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-weight: 700;
+    letter-spacing: -1.6px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  .hero p.lead {
+    color: rgba(255,255,255,0.82);
+    font-size: 1.2rem;
+    max-width: 720px;
+    margin: 0 auto 28px auto;
+  }
+
+  .hero-buttons .btn {
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-weight: 600;
+  }
+
+  .hero-buttons .btn-outline-light {
+    border-width: 1.5px;
+  }
+
+  .mini-stats {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .mini-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 14px 18px;
+    min-width: 170px;
+  }
+
+  .mini-stat strong {
+    display: block;
+    font-size: 1.05rem;
+  }
+
+  .mini-stat span {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+  }
+
+  .section-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .feature-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .feature-icon {
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(37, 99, 235, 0.10);
+    color: var(--primary);
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .section-subtitle {
+    color: var(--muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .beta-box {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  }
+
+  .beta-pill {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+  }
+
+  footer {
+    background: rgba(255,255,255,0.72);
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(8px);
+  }
+
+  footer a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .hero-image {
+    max-width: 85%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover {
+    transform: scale(1.03);
+  }
+
+  .small-kit {
+    max-width: 60%;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 991px) {
+    .hero .container {
+      min-height: auto;
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
     .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top right, rgba(37, 99, 235, 0.22), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.16), transparent 28%),
-        linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e293b 100%);
-      color: white;
-      border-radius: 0 0 32px 32px;
+      border-radius: 0 0 24px 24px;
     }
 
     .hero .container {
-      min-height: 72vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-      padding-bottom: 64px;
+      padding-top: 36px;
+      padding-bottom: 36px;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.92);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+    .hero-mobile-fix {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-text-col {
+      order: 1;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero-image-col {
+      order: 2;
+      text-align: center;
+      margin-top: 10px !important;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      font-weight: 700;
-      letter-spacing: -1.6px;
-      line-height: 1.05;
-      margin-bottom: 18px;
-    }
-
-    .hero p.lead {
-      color: rgba(255,255,255,0.82);
-      font-size: 1.2rem;
-      max-width: 720px;
-      margin: 0 auto 28px auto;
-    }
-
-    .hero-buttons .btn {
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 600;
-    }
-
-    .hero-buttons .btn-outline-light {
-      border-width: 1.5px;
-    }
-
-    .mini-stats {
-      margin-top: 36px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .mini-stat {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      padding: 14px 18px;
-      min-width: 170px;
-    }
-
-    .mini-stat strong {
-      display: block;
-      font-size: 1.05rem;
-    }
-
-    .mini-stat span {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.95rem;
-    }
-
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-    }
-
-    .feature-card {
-      height: 100%;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-    }
-
-    .feature-icon {
-      width: 52px;
-      height: 52px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-      background: rgba(37, 99, 235, 0.10);
-      color: var(--primary);
-      font-size: 1.35rem;
+      font-size: 2.7rem;
+      line-height: 1.08;
       margin-bottom: 16px;
     }
 
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -1px;
+    .hero p.lead {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 auto 24px auto;
     }
 
-    .section-subtitle {
-      color: var(--muted);
-      max-width: 700px;
+    .hero-buttons {
+      gap: 12px !important;
+    }
+
+    .hero-buttons .btn {
+      width: 100%;
+      max-width: 320px;
       margin: 0 auto;
     }
 
-    .beta-box {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    .mini-stats {
+      margin-top: 28px;
+      gap: 12px;
     }
 
-    .beta-pill {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.92rem;
-      margin-bottom: 14px;
+    .mini-stat {
+      width: 100%;
+      min-width: unset;
     }
 
-    footer {
-      background: rgba(255,255,255,0.72);
-      border-top: 1px solid rgba(15, 23, 42, 0.06);
-      backdrop-filter: blur(8px);
+    .hero-image {
+      max-width: 88%;
     }
 
-    footer a {
-      color: var(--text);
-      text-decoration: none;
+    .small-kit {
+      max-width: 72%;
     }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-title {
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    @media (max-width: 991px) {
-      .hero .container {
-        min-height: 64vh;
-      }
-    }
-.hero-image {
-  max-width: 85%;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease;
-}
-
-.hero-image:hover {
-  transform: scale(1.03);
-}
-
-.small-kit {
-  max-width: 60%;
-  opacity: 0.9;
-}
-    
-  </style>
+  }
+</style>
 </head>
 
 <body>
@@ -288,28 +358,33 @@
       </div>
     </div>
   </nav>
+  
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center hero-mobile-fix">
 
-  <header class="hero">
-    <div class="container text-center">
-      <div class="w-100">
-        <div class="hero-badge mx-auto">
+      <div class="col-lg-6 hero-text-col text-center text-lg-start">
+        <div class="hero-badge mx-auto mx-lg-0">
           <i class="bi bi-cpu"></i>
           Kit smart per temperatura e umidità
         </div>
 
-        <h1>Controlla la temperatura<br>in modo intelligente</h1>
+        <h1>
+          Controlla la temperatura<br>
+          in modo intelligente
+        </h1>
 
-        <p class="lead">
+        <p class="lead mx-auto mx-lg-0">
           ThermoKit è un sistema semplice e smart per monitorare temperatura e umidità in tempo reale,
           pensato per chi vuole iniziare senza complicazioni.
         </p>
 
-        <div class="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-3">
+        <div class="hero-buttons d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
           <a href="prodotti.html" class="btn btn-primary btn-lg">Scopri ThermoKit</a>
           <a href="#beta" class="btn btn-outline-light btn-lg">Entra nella beta</a>
         </div>
 
-        <div class="mini-stats">
+        <div class="mini-stats justify-content-center justify-content-lg-start">
           <div class="mini-stat">
             <strong>Facile da usare</strong>
             <span>Setup rapido e intuitivo</span>
@@ -324,26 +399,24 @@
           </div>
         </div>
       </div>
-      
-<div class="col-lg-6 text-center mt-5 mt-lg-0">
-<span class="badge bg-primary mb-2">Più completo</span>
-  <div class="mb-4">
-    <img src="thermokit_pro.png" 
-         alt="ThermoKit Pro" 
-         class="img-fluid hero-image">
-    <p class="mt-2 fw-semibold text-light">ThermoKit Pro</p>
-  </div>
 
-  <div>
-    <img src="thermokit_base.png" 
-         alt="ThermoKit Base" 
-         class="img-fluid hero-image small-kit">
-    <p class="mt-2 text-light opacity-75">ThermoKit Base</p>
-  </div>
+      <div class="col-lg-6 hero-image-col text-center mt-5 mt-lg-0">
+        <span class="badge bg-primary mb-2">Più completo</span>
 
-</div>
+        <div class="mb-4">
+          <img src="thermokit_pro.png" alt="ThermoKit Pro" class="img-fluid hero-image">
+          <p class="mt-2 fw-semibold text-light">ThermoKit Pro</p>
+        </div>
+
+        <div>
+          <img src="thermokit_base.png" alt="ThermoKit Base" class="img-fluid hero-image small-kit">
+          <p class="mt-2 text-light opacity-75">ThermoKit Base</p>
+        </div>
+      </div>
+
     </div>
-  </header>
+  </div>
+</header>
 
   <main>
     <section class="py-5 py-lg-6">
@@ -510,8 +583,8 @@
 }
 
 .cookie-image img {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 
